@@ -38,7 +38,7 @@ find_lto(CXX)
 #                         Locate files (change as needed).
 # --------------------------------------------------------------------------------
 set(SOURCES          # All .cpp files in src/
-    src/example.cpp
+    src/vector.cpp
     src/lacze_do_gnuplota
 )
 set(TESTFILES        # All .cpp files in tests/
