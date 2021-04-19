@@ -3,8 +3,10 @@
 #include "matrix.hh"
 #include <iostream>
 #include <cstdlib>
+#include<cmath>
 
 
+using namespace std; 
 /******************************************************************************
  |  Konstruktor klasy Matrix.                                                 |
  |  Argumenty:                                                                |
@@ -153,3 +155,16 @@ std::ostream &operator<<(std::ostream &out, const Matrix &mat) {
     }
     return out;
 }
+
+Matrix::Matrix(double kat)
+{
+    radian = kat * M_PI / 180;
+}
+void Matrix::Obroc()
+{
+    value[0][0] = cos(radian);
+    value[0][1] = -sin(radian);
+    value[1][0] = sin(radian);
+    value[1][1] = cos(radian);
+}
+

@@ -1,6 +1,6 @@
 #include "rectangle.hh"
 using namespace std;
-Rectangle::Rectangle(Vector pkt, double h, double w)
+Prostokat::Prostokat(Vector pkt, double h, double w)
 {
 
     for (int i = 0; i < 4; i++)
@@ -16,7 +16,7 @@ Rectangle::Rectangle(Vector pkt, double h, double w)
 }
 
 std::ostream &operator<<(std::ostream &Strm,
-                         const Rectangle &Pr)
+                         const Prostokat &Pr)
 {
     for (int i = 0; i < 4; i++)
     {
@@ -26,9 +26,9 @@ std::ostream &operator<<(std::ostream &Strm,
     return Strm;
 }
 
-Rectangle Rectangle::operator+(Vector wektor)
+Prostokat Prostokat::operator+(Vector wektor)
 {
-    Rectangle wynik;
+    Prostokat wynik;
     for (int i = 0; i < 4; i++)
     {
         wynik[i] = pkt1[i] + wektor;

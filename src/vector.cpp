@@ -26,10 +26,9 @@ Vector::Vector() {
  |      Tablice wypelniona wartosciami podanymi w argumencie.                 |
  */
 
-Vector::Vector(double tmp[SIZE]) {
-    for (int i = 0; i < SIZE; ++i) {
-        size[i] = tmp[i];
-    }
+Vector::Vector(double a, double b) {
+   size[0]=a;
+   size[1]=b;
 }
 
 

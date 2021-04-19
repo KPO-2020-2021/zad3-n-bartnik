@@ -43,9 +43,11 @@ set(SOURCES          # All .cpp files in src/
     src/matrix.cpp
     src/lacze_do_gnuplota
 )
+
 set(TESTFILES        # All .cpp files in tests/
     tests/main.cpp
-)
+    tests/dummy.cpp)
+
 set(LIBRARY_NAME engine)  # Default name for the library built from src/*.cpp (change if you wish)
 
 # --------------------------------------------------------------------------------

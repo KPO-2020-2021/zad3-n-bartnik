@@ -14,7 +14,7 @@ public:
 
     Vector();
 
-    Vector(double [SIZE]);
+    Vector(double a, double b);
 
     Vector operator + (const Vector &v);
 

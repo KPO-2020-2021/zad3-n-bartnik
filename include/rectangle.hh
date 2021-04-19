@@ -10,16 +10,16 @@
  *  Tutaj trzeba opisac klase. Jakie pojecie modeluje ta klasa
  *  i jakie ma glowne cechy.
  */
-class Rectangle
+class Prostokat
 {
   Vector pkt1[4];
 
 public:
-Rectangle(){};
-  Rectangle(Vector pkt, double h, double w);
+Prostokat(){};
+  Prostokat(Vector pkt, double h, double w);
   Vector operator[](int Ind) const { return pkt1[Ind]; } //wypisywanie
   Vector &operator[](int Ind) { return pkt1[Ind]; } //wpisywanie
-Rectangle operator+ (Vector wektor);
+Prostokat operator+ (Vector wektor);
 };
 
 
@@ -32,4 +32,4 @@ Rectangle operator+ (Vector wektor);
  *    ~bk/edu/kpo/zalecenia.txt 
  */
 std::ostream &operator<<(std::ostream &Strm,
-                         const Rectangle &Pr);
+                         const Prostokat &Pr);
