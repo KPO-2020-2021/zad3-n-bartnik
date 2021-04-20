@@ -114,7 +114,7 @@ bool PrzykladZapisuWspolrzednychDoPliku(const char *sNazwaPliku,
               return false;
        }
 
-      StrmPlikowy<<Pr;
+       StrmPlikowy << Pr;
 
        StrmPlikowy.close();
        return !StrmPlikowy.fail();
@@ -123,10 +123,10 @@ bool PrzykladZapisuWspolrzednychDoPliku(const char *sNazwaPliku,
 int main()
 {
        char menu;
-       double kat, a=20, b=30;
+       double kat, a = 20, b = 30;
        Vector wektor_trans;
        Vector wektor(a, b);
-       Prostokat Pr(wektor, 20, 30);
+       Prostokat Pr(wektor, 100, 100);
 
        //wysokosc i długosc prostokata
        std::cout << "Project Rotation 2D based on C++ Boiler Plate v"
@@ -179,16 +179,14 @@ int main()
        //
        Lacze.ZmienTrybRys(PzG::TR_2D);
 
-       PrzykladZapisuWspolrzednychDoStrumienia(std::cout, 0);
        if (!PrzykladZapisuWspolrzednychDoPliku("../datasets/prostokat.dat", Pr))
               return 1;
        Lacze.Rysuj(); // <- Tutaj gnuplot rysuje, to co zapisaliśmy do pliku
-       std::cout << "Naciśnij ENTER, aby kontynuowac" << std::endl;
-       std::cin.ignore(100000, '\n');
+
        //----------------------------------------------------------
        // Ponownie wypisuje wspolrzedne i rysuje prostokąt w innym miejscu.
        //
-       
+       int ile;
 
        while (menu != 'k')
        {
@@ -207,8 +205,14 @@ int main()
               {
                      std::cout << "Podaj wartość kąta obrotu w stopniach" << std::endl;
                      std::cin >> kat;
+                     std::cout << "ile obrotow" << std::endl;
+                     std::cin >> ile;
                      Matrix macierz(kat);
                      macierz.Obroc();
+                     for (int i = 0; i < ile; i++)
+                     {
+                            Pr = macierz * Pr;
+                     }
               }
               break;
               case 'p':
@@ -220,14 +224,7 @@ int main()
               break;
               case 'w':
               {
-                  Lacze.ZmienTrybRys(PzG::TR_2D);
-
-       
-       if (!PrzykladZapisuWspolrzednychDoPliku("../datasets/prostokat.dat", Pr))
-              return 1;
-       Lacze.Rysuj(); // <- Tutaj gnuplot rysuje, to co zapisaliśmy do pliku
-       std::cout << "Naciśnij ENTER, aby kontynuowac" << std::endl;
-       std::cin.ignore(100000, '\n');   
+                     std::cout << Pr;
               }
               break;
               case 'm':
@@ -243,6 +240,9 @@ int main()
               }
               break;
               }
+              if (!PrzykladZapisuWspolrzednychDoPliku("../datasets/prostokat.dat", Pr))
+                     return 1;
+              Lacze.Rysuj();
        }
        return 0;
 }
