@@ -168,3 +168,13 @@ void Matrix::Obroc()
     value[1][1] = cos(radian);
 }
 
+
+Prostokat Matrix::operator*(Prostokat prost)
+{
+    Prostokat wynik;
+    for (int i = 0; i < 4; i++)
+    {
+        wynik[i] = (*this) * prost[i];
+    }
+    return wynik;
+}

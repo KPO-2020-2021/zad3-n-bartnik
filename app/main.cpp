@@ -123,9 +123,9 @@ bool PrzykladZapisuWspolrzednychDoPliku(const char *sNazwaPliku,
 int main()
 {
        char menu;
-       double kat;
+       double kat, a=20, b=30;
        Vector wektor_trans;
-       Vector wektor(20, 30);
+       Vector wektor(a, b);
        Prostokat Pr(wektor, 20, 30);
 
        //wysokosc i długosc prostokata

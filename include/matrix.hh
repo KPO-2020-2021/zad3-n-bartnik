@@ -2,6 +2,7 @@
 
 #include "size.hh"
 #include "vector.hh"
+#include"rectangle.hh"
 #include <iostream>
 #include <cstdlib>
 
@@ -22,6 +23,8 @@ public:
     //Matrix() { radian = 0; };
     Matrix(double kat);
     void Obroc();
+ 
+  Prostokat operator*(Prostokat wektor);
 };
 
 std::istream &operator>>(std::istream &in, Matrix &mat);
