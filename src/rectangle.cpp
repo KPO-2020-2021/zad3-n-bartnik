@@ -35,3 +35,4 @@ Prostokat Prostokat::operator+(Vector wektor)
     }
     return wynik;
 }
+

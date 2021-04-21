@@ -20,6 +20,11 @@ Prostokat(){};
   Vector operator[](int Ind) const { return pkt1[Ind]; } //wypisywanie
   Vector &operator[](int Ind) { return pkt1[Ind]; } //wpisywanie
 Prostokat operator+ (Vector wektor);
+void trans(Vector wektor)
+{
+  *this=*this+wektor;
+}
+
 };
 
 
