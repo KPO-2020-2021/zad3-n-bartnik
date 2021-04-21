@@ -20,6 +20,7 @@ Matrix::Matrix() {
             value[i][j] = 0;
         }
     }
+    radian=0;
 }
 
 
@@ -70,12 +71,12 @@ Vector Matrix::operator * (Vector tmp) {
 double &Matrix::operator()(unsigned int row, unsigned int column) {
 
     if (row >= SIZE) {
-        std::cout << "Error: Macierz jest poza zasiegiem"; 
+        throw "Error: Macierz jest poza zasiegiem"; 
         exit(0); // lepiej byłoby rzucić wyjątkiem stdexcept
     }
 
     if (column >= SIZE) {
-        std::cout << "Error: Macierz jest poza zasiegiem";
+        throw "Error: Macierz jest poza zasiegiem";
         exit(0); // lepiej byłoby rzucić wyjątkiem stdexcept
     }
 
@@ -94,12 +95,12 @@ double &Matrix::operator()(unsigned int row, unsigned int column) {
 const double &Matrix::operator () (unsigned int row, unsigned int column) const {
 
     if (row >= SIZE) {
-        std::cout << "Error: Macierz jest poza zasiegiem";
+        throw "Error: Macierz jest poza zasiegiem";
         exit(0); // lepiej byłoby rzucić wyjątkiem stdexcept
     }
 
     if (column >= SIZE) {
-        std::cout << "Error: Macierz jest poza zasiegiem";
+        throw "Error: Macierz jest poza zasiegiem";
         exit(0); // lepiej byłoby rzucić wyjątkiem stdexcept
     }
 
@@ -177,4 +178,4 @@ Prostokat Matrix::operator*(Prostokat prost)
         wynik[i] = (*this) * prost[i];
     }
     return wynik;
-}
+} 

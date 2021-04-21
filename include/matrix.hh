@@ -20,9 +20,10 @@ public:
     Matrix operator+(Matrix tmp);
     double &operator()(unsigned int row, unsigned int column);
     const double &operator()(unsigned int row, unsigned int column) const;
-    //Matrix() { radian = 0; };
     Matrix(double kat);
     void Obroc();
+
+    void Rot(Prostokat &Pr) {Pr=*this*Pr;}
  
   Prostokat operator*(Prostokat wektor);
 };
