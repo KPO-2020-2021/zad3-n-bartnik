@@ -57,6 +57,7 @@ Vector Matrix::operator * (Vector tmp) {
         }
     }
     return result;
+
 }
 
 
@@ -85,7 +86,8 @@ double &Matrix::operator()(unsigned int row, unsigned int column) {
 
 
 /******************************************************************************
- |  Funktor macierzy                                                          |
+ |  Funktor macierzy                                                ctor::odleglosc(Vector wek)
+{      8          |
  |  Argumenty:                                                                |
  |      row - numer wiersza.                                                  |
  |      column - numer kolumny.                                               |
@@ -157,10 +159,13 @@ std::ostream &operator<<(std::ostream &out, const Matrix &mat) {
     return out;
 }
 
+/*FUnkcja oblicza dla macierzy zadany kąt (ze stopni na radiany)*/
 Matrix::Matrix(double kat)
 {
     radian = kat * M_PI / 180;
 }
+
+/*Funkcja tworzy macierz obrotu według wzoru podanego w instrukcji zadania*/
 void Matrix::Obroc()
 {
     value[0][0] = cos(radian);
@@ -169,7 +174,7 @@ void Matrix::Obroc()
     value[1][1] = cos(radian);
 }
 
-
+/*Funkcja mnoży prostokąt i macierz. Używana w rotacji prostokąta*/
 Prostokat Matrix::operator*(Prostokat prost)
 {
     Prostokat wynik;
@@ -179,3 +184,29 @@ Prostokat Matrix::operator*(Prostokat prost)
     }
     return wynik;
 } 
+/*Metoda eliminacji Gaussa
+i, j, k- liczniki petel,
+ograniczony do liczby 2 ze wzgledu na rozmiary macierzy w programie
+ratio - dzielnik wierszy
+*/
+
+void Matrix::Gaus(Matrix macierz){
+    float ratio;
+for(int i=0;i<2;i++)
+	 {
+		  if(macierz(i,i) == 0.0)
+		  {
+			   std::cout<<"Mathematical Error!";
+			   exit(0);
+		  }
+		  for(int j=0;j<2;j++)
+		  {
+			   ratio = macierz(j,i)/ macierz(i,i) ;
+
+			   for(int k=0;k<2;k++)
+			   {
+			  		macierz(j,k) = macierz(j,k) - ratio* macierz(i,k);
+			   }
+		  }
+	 }
+}

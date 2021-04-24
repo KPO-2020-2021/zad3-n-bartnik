@@ -68,39 +68,11 @@ void PrzykladZapisuWspolrzednychDoStrumienia(std::ostream &StrmWy,
               << std::setw(16) << std::fixed << std::setprecision(10) << y4 + Przesuniecie << std::endl;
        StrmWy << std::setw(16) << std::fixed << std::setprecision(10) << x1 + Przesuniecie
               << std::setw(16) << std::fixed << std::setprecision(10) << y1 + Przesuniecie << std::endl;
-       // Jeszcze raz zapisujemy pierwszy punkt,
-       // aby gnuplot narysowal zamkniętą linię.
+       /*Jeszcze raz zapisujemy pierwszy punkt,
+       aby gnuplot narysowal zamkniętą linię.*/
 }
 
-/*
-       cout<<"Wybierz jedna z dostepnych opcji: "<<endl;
-       cout<<"o - obrot prostokata o zadany kat"<<endl;
-       cout<<"p - przesuniecie prostokata o zadany wektor"<<endl;
-       cout<<"w - wyswietlenie wspolrzednych wierzcholkow"<<endl;
-       cout<<"m - wyswietl menu"<<endl;
-       cout<<"k - koniec dzialania programu"<<endl;
 
-       switch(menu){
-              case 'o':
-              break;
-              case 'p':
-              break;
-              case 'w':cout
-              case 'k':
-              cout<<"Koniec dzialania prStrmWy
-
-
- * Przyklad zapisu wspolrzednych zbioru punktow do pliku, z ktorego
- * dane odczyta program gnuplot i narysuje je w swoim oknie graficznym.
- * \param[in] sNazwaPliku - nazwa pliku, do którego zostana zapisane
- *                          wspolrzędne punktów.
- * \param[in] Przesuniecie - ten parameter jest tylko po to, aby pokazać
- *                          mozliwosc zmiany wspolrzednych i prostokata
- *                          i zmiane jego polorzenia na okienku graficznym
- *                         rysownym przez gnuplota.
- * \retval true - gdy operacja zapisu powiodła się,
- * \retval false - w przypadku przeciwnym.
- */
 bool PrzykladZapisuWspolrzednychDoPliku(const char *sNazwaPliku,
                                         Prostokat Pr)
 {

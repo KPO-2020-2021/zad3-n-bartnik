@@ -28,6 +28,7 @@ public:
 
     double &operator [] (int index);
     bool operator==(Vector wek) const;
+    double odleglosc (Vector wek);
 
 };
 

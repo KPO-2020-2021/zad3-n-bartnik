@@ -1,6 +1,7 @@
 #include "size.hh"
 #include "vector.hh"
 #include <iostream>
+#include <cmath>
 
 using namespace std;
 
@@ -124,8 +125,8 @@ const double &Vector::operator[](int index) const
 {
     if (index < 0 || index >= SIZE)
     {
-       throw "Error: Wektor jest poza zasiegiem!";
-         
+        throw "Error: Wektor jest poza zasiegiem!";
+
     } // lepiej byłoby rzucić wyjątkiem stdexcept
     return size[index];
 }
@@ -172,10 +173,22 @@ std::istream &operator>>(std::istream &in, Vector &tmp)
     std::cout << std::endl;
     return in;
 }
- bool Vector::operator==(Vector wek) const
+
+/*Funkcja porównuje ze sobą dwa wektory - wektor oryginalny i wektor podany do funkcji*/
+bool Vector::operator==(Vector wek) const
 {
     if (wek[0] == size[0] && wek[1] == size[1])
         return true;
 
     return false;
+}
+
+double Vector::odleglosc(Vector wek)
+{     /* dY, dX - odleglosci bokow */
+    double wynik, dX, dY;
+    dX = this->size[0] - wek[0];
+    dY = this->size[1] - wek[1];
+
+    wynik = sqrt(pow(dX, 2) + pow(dY, 2)); /* liczy pierwiastek z sumy kwadratów odległosći */
+    return wynik;
 }

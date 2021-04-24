@@ -69,7 +69,7 @@ TEST_CASE("wektor - wyświetlanie")
 
 TEST_CASE("wektor - wpisywanie")
 {
-  Vector a;
+    Vector a;
 
     std::istringstream in("1 1 ");
     in >> a;
@@ -81,24 +81,34 @@ TEST_CASE("wektor - wpisywanie")
 
 TEST_CASE("operator porownania")
 {
-   Vector wektor1(1, 2);
+    Vector wektor1(1, 2);
     Vector wektor2(1, 2);
-  
-    CHECK(wektor1 == wektor2);
 
+    CHECK(wektor1 == wektor2);
 }
-TEST_CASE("T=blad") {
-  Vector wektor1(1, 2);
-   WARN_THROWS(wektor1[2]);
+TEST_CASE("T=blad")
+{
+    Vector wektor1(1, 2);
+    WARN_THROWS(wektor1[2]);
 }
 
 TEST_CASE("operator porownania")
 {
-   Vector wektor1(1, 2);
+    Vector wektor1(1, 2);
     Vector wektor2(1, 2);
-  
-    CHECK(wektor1 == wektor2);
 
+    CHECK(wektor1 == wektor2);
+}
+
+TEST_CASE("mierzenie odległosci")
+{
+    double wynik;
+    Vector wektor1(1, 2);
+    Vector wektor2(1, 2);
+
+    wynik = wektor1.odleglosc(wektor2);
+
+    CHECK(wynik == 0);
 }
 /****************************MACIERZ****************************/
 
@@ -127,30 +137,41 @@ TEST_CASE("konstruktor bezparametryczny")
 
 TEST_CASE("macierz mnożenie * wektor")
 {
-   Vector wektor1(1, 2);
+    Vector wektor1(1, 2);
     Vector wektor2(0, 0);
     Matrix macierz;
 
- wektor1=macierz*wektor1 ;
+    wektor1 = macierz * wektor1;
     CHECK(wektor1 == wektor2);
-
 }
 
 TEST_CASE("macierz obrót")
 {
-   Vector wektor1(1, 2);
+    Vector wektor1(1, 2);
     Vector wektor2(1, 2);
     Matrix macierz;
     macierz.Obroc();
-    wektor1=macierz*wektor2;
+    wektor1 = macierz * wektor2;
 
     CHECK(wektor1 == wektor2);
-
 }
 
-TEST_CASE("T=blad") {
-  Matrix macierz;
-   WARN_THROWS(macierz(100, 100));
+TEST_CASE("T=blad")
+{
+    Matrix macierz;
+    WARN_THROWS(macierz(100, 100));
+}
+
+TEST_CASE("metoda gaussa")
+{
+    double tab[2][2] = {{1, 1}, {0, 1}};
+    Matrix macierz(tab);
+    macierz.Gaus(macierz);
+
+    CHECK(macierz(0, 0) == 1);
+    CHECK(macierz(0, 1) == 1);
+    CHECK(macierz(1, 0) == 0);
+    CHECK(macierz(1, 1) == 1);
 }
 
 /****************************PROSTOKAT****************************/
@@ -158,13 +179,14 @@ TEST_CASE("T=blad") {
 TEST_CASE("konstruktor parametryczny")
 {
 
-    double tab[2][2] = {{2, 2}, {2, 2}};
-    Matrix macierz(tab);
+    Vector wektor(1, 1), wektor1(21, 1), wektor2(21, 11), wektor3(1, 11);
+    double h = 10, w = 20;
+    Prostokat Pr(wektor, h, w);
 
-    CHECK(macierz(0, 0) == 2);
-    CHECK(macierz(0, 1) == 2);
-    CHECK(macierz(1, 0) == 2);
-    CHECK(macierz(1, 1) == 2);
+    CHECK(Pr[0] == wektor);
+    CHECK(Pr[1] == wektor1);
+    CHECK(Pr[2] == wektor2);
+    CHECK(Pr[3] == wektor3);
 }
 
 TEST_CASE("konstruktor bezparametryczny")
@@ -176,20 +198,18 @@ TEST_CASE("konstruktor bezparametryczny")
     CHECK(Pr[1] == wektor);
     CHECK(Pr[2] == wektor);
     CHECK(Pr[3] == wektor);
- 
 }
 
 TEST_CASE("przesuniecie o wektor")
 {
 
     Prostokat Pr;
-    Vector wektor(20,20);
+    Vector wektor(20, 20);
     Pr.trans(wektor);
     CHECK(Pr[0] == wektor);
     CHECK(Pr[1] == wektor);
     CHECK(Pr[2] == wektor);
     CHECK(Pr[3] == wektor);
- 
 }
 
 TEST_CASE("obrot wokol srodka ukladu wspolrzednych")
@@ -205,16 +225,23 @@ TEST_CASE("obrot wokol srodka ukladu wspolrzednych")
     CHECK(Pr[1] == wektor);
     CHECK(Pr[2] == wektor);
     CHECK(Pr[3] == wektor);
- 
 }
 
-TEST_CASE("wektor - wyświetlanie")
+TEST_CASE("prostokar - wyświetlanie")
 {
     Prostokat Pr;
-    // double a[2]={1,2};
+
     std::ostringstream StrmWyj;
     StrmWyj << Pr;
     std::cout << StrmWyj.str();
     CHECK("0 0 \n0 0 \n0 0 \n0 0 \n0 0 \n" == StrmWyj.str());
 }
 
+TEST_CASE("prostokar - sprawdzanie odleglosci")
+{
+    Vector wektor(1, 1);
+    double wynik, h = 10, w = 20;
+    Prostokat Pr(wektor, h, w);
+    wynik = Pr.odleglosci();
+    CHECK(wynik == 60);
+}
